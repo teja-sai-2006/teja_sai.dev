@@ -7,9 +7,9 @@
 
 **📍 Visakhapatnam, India 530048 &nbsp;|&nbsp; 📱 +91 8008217209 &nbsp;|&nbsp; 📧 [tejasai13052006@gmail.com](mailto:tejasai13052006@gmail.com)**
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-Live-00f2fe?style=for-the-badge&logo=vercel)](https://teja-sai-2006.github.io)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Live-00f2fe?style=for-the-badge&logo=vercel)](https://teja-sai-2006.github.io/teja_sai.dev/)
 [![GitHub](https://img.shields.io/badge/GitHub-teja--sai--2006-181717?style=for-the-badge&logo=github)](https://github.com/teja-sai-2006)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/teja-sai-satti-3a0525320/)
 
 </div>
 
@@ -208,9 +208,9 @@ AI-powered study search application helping users discover educational resources
 
 | Platform | Link |
 |---|---|
-| 🌐 Portfolio | [View Portfolio](https://teja-sai-2006.github.io) |
+| 🌐 Portfolio | [View Portfolio](https://teja-sai-2006.github.io/teja_sai.dev/) |
 | 🐙 GitHub | [github.com/teja-sai-2006](https://github.com/teja-sai-2006) |
-| 💼 LinkedIn | [Connect on LinkedIn](https://linkedin.com) |
+| 💼 LinkedIn | [Connect on LinkedIn](https://www.linkedin.com/in/teja-sai-satti-3a0525320/) |
 | 🏅 Google Developer | [developers.google.com/profile/u/sattitejasairamareddy_GVPCE](https://developers.google.com/profile/u/sattitejasairamareddy_GVPCE) |
 | 📁 Certifications Drive | [Google Drive Folder](https://drive.google.com/drive/folders/1aEE8u-4ol6jIzhoQuAF_BhbwR5HbFV6i?usp=drive_link) |
 

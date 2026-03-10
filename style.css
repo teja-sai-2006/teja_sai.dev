@@ -733,9 +733,9 @@ section {
 
 /* Neural Network Status UI */
 .neural-status-indicator {
-    position: absolute;
-    top: 5%; /* Higher up to avoid main content overlap */
-    right: 5%;
+    position: fixed;
+    bottom: 3rem;
+    right: 2rem;
     display: flex;
     align-items: center;
     gap: 0.8rem;
