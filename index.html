@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teja Sai Satti | AI & ML Engineer Portfolio</title>
+    <meta name="description" content="Portfolio of Teja Sai Satti - AI & ML Engineer from Visakhapatnam, India.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- GSAP for scroll animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Typed.js for typing effect -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Three.js (added deferred to load after HTML) -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+        }
+      }
+    </script>
+</head>
+<body class="loading-state">
+    <!-- AI System Loader -->
+    <div id="ai-loader" class="ai-loader">
+        <div class="loader-particles" id="loader-particles"></div>
+        <div class="loader-content glass-card">
+            <!-- Rotating AI Circular Loader -->
+            <div class="ai-orb-container">
+                <div class="loader-ring ring-1"></div>
+                <div class="loader-ring ring-2"></div>
+                <div class="loader-ring ring-3"></div>
+                <div class="loader-core"></div>
+            </div>
+            
+            <!-- Typing Text Container -->
+            <div class="loader-text-container">
+                <span id="loader-typed-text" class="loader-text"></span>
+            </div>
+            
+            <!-- Animated Progress Bar -->
+            <div class="loader-progress-bar">
+                <div class="loader-progress-fill" id="loader-progress"></div>
+                <div class="loader-progress-glow"></div>
+            </div>
+            <div class="loader-percentage" id="loader-percentage">0%</div>
+        </div>
+    </div>
+
+    <!-- Animated Background (Three.js WebGL and fallback blobs) -->
+    <div class="background-container">
+        <!-- Blobs hidden by default via CSS for the 3D version, but kept as a fallback -->
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+        <!-- Three.js Canvas -->
+        <canvas class="webgl"></canvas>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">Teja<span class="text-gradient">.ai</span></a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            
+            <!-- Neural Network Status UI -->
+            <div class="neural-status-indicator reveal" id="neural-status">
+                <div class="status-dot"></div>
+                <div class="status-text">
+                    <span class="status-label">Neural Network Status:</span>
+                    <span class="status-value highlight" id="neural-status-text">ACTIVE</span>
+                </div>
+            </div>
+
+            <div class="hero-content reveal">
+                <div class="hero-left">
+                    <p class="greeting reveal">Hello, I am</p>
+                    <h1 class="name reveal delay-1">Teja <span class="text-gradient">Sai</span></h1>
+                    
+                    <div class="typing-container reveal delay-2">
+                        <span id="typed-output"></span>
+                    </div>
+                    
+                    <p class="hero-desc reveal delay-2" style="margin-top: 1rem; font-size: 1.1rem; color: var(--text-secondary);">
+                        "I build intelligent systems with AI & Machine Learning"
+                    </p>
+                    
+                    <div class="hero-buttons reveal delay-3">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="resume.pdf" target="_blank" class="btn btn-secondary">Download Resume</a>
+                    </div>
+
+                    <!-- Animated Statistics -->
+                    <div class="hero-stats reveal delay-3">
+                        <div class="hero-stat-item">
+                            <h3 class="hero-stat-number" data-target="7">0</h3><span class="plus">+</span>
+                            <p class="hero-stat-text">Projects</p>
+                        </div>
+                        <div class="hero-stat-item">
+                            <h3 class="hero-stat-number" data-target="15">0</h3><span class="plus">+</span>
+                            <p class="hero-stat-text">Skills</p>
+                        </div>
+                        <div class="hero-stat-item">
+                            <h3 class="hero-stat-number" data-target="3">0</h3><span class="plus">+</span>
+                            <p class="hero-stat-text">Hackathons</p>
+                        </div>
+                        <div class="hero-stat-item">
+                            <h3 class="hero-stat-number" data-target="10">0</h3><span class="plus">+</span>
+                            <p class="hero-stat-text">Certifications</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links-hero">
+                    <a href="https://github.com/teja-sai-2006" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" target="_blank" class="social-icon"><i class="fas fa-file-pdf"></i></a>
+                </div>
+            </div>
+            <div class="hero-visual reveal-right">
+                <div class="glass-orb">
+                    <div class="orb-content">
+                        <!-- AI Neural Network SVG Placeholder (will replace the old fontawesome brain) -->
+                        <svg class="neural-net-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Nodes -->
+                            <circle cx="20" cy="50" r="4" class="node"/>
+                            <circle cx="50" cy="20" r="4" class="node"/>
+                            <circle cx="50" cy="50" r="4" class="node"/>
+                            <circle cx="50" cy="80" r="4" class="node"/>
+                            <circle cx="80" cy="50" r="4" class="node"/>
+                            <!-- Connections -->
+                            <line x1="20" y1="50" x2="50" y2="20" class="connection"/>
+                            <line x1="20" y1="50" x2="50" y2="50" class="connection"/>
+                            <line x1="20" y1="50" x2="50" y2="80" class="connection"/>
+                            <line x1="50" y1="20" x2="80" y2="50" class="connection"/>
+                            <line x1="50" y1="50" x2="80" y2="50" class="connection"/>
+                            <line x1="50" y1="80" x2="80" y2="50" class="connection"/>
+                        </svg>
+                        <div class="code-rings"></div>
+                        <div class="code-rings ring-2"></div>
+                        <div class="code-rings ring-3"></div>
+                    </div>
+                </div>
+                
+                <!-- Floating Tech Icons -->
+                <div class="floating-icons-container">
+                    <div class="float-icon icon-python" title="Python"><i class="fab fa-python"></i></div>
+                    <div class="float-icon icon-tf" title="TensorFlow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TF"/></div>
+                    <div class="float-icon icon-pytorch" title="PyTorch"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch"/></div>
+                    <div class="float-icon icon-opencv" title="OpenCV"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV"/></div>
+                    <div class="float-icon icon-numpy" title="NumPy"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy"/></div>
+                    <div class="float-icon icon-scikit" title="Scikit-learn"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit"/></div>
+                </div>
+            </div>
+            <a href="#about" class="scroll-down">
+                <i class="fas fa-chevron-down hidden-arrow"></i>
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <h2 class="section-title reveal"><span class="text-gradient">01.</span> About Me</h2>
+            <div class="about-container reveal">
+                <div class="about-text glass-card">
+                    <p>I am a highly motivated student specializing in Artificial Intelligence and Machine Learning at Gayatri Vidya Parishad College of Engineering, Visakhapatnam. </p>
+                    <p>Proficient in Python and data analysis, I have a strong track record of successful hands-on projects that enhance technical expertise and contribute to innovative solutions. I demonstrate exceptional teamwork and problem-solving abilities, complemented by outstanding communication skills.</p>
+                    <p>Eager to learn and grow in a professional environment, bringing ambition and a strong work ethic to every challenge.</p>
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Visakhapatnam, India 530048</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>tejasai13052006@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 8008217209</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card glass-card parallax-element">
+                        <h3 class="stat-number">7+</h3>
+                        <p class="stat-text">Projects</p>
+                    </div>
+                    <div class="stat-card glass-card parallax-element delay-1">
+                        <h3 class="stat-number">10+</h3>
+                        <p class="stat-text">Certifications</p>
+                    </div>
+                    <div class="stat-card glass-card parallax-element delay-2">
+                        <h3 class="stat-number highlight">AI</h3>
+                        <p class="stat-text">Specialization Area</p>
+                    </div>
+                    <div class="stat-card glass-card parallax-element delay-3">
+                        <h3 class="stat-number">3+</h3>
+                        <p class="stat-text">Hackathons</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <h2 class="section-title reveal"><span class="text-gradient">02.</span> Technical Skills</h2>
+            <div class="skills-orbit-container reveal">
+                <div class="orbit-center">
+                    <div class="orbit-center-orb"></div>
+                    <span>AI / ML</span>
+                </div>
+                
+                <!-- Inner Orbit (Languages) -->
+                <div class="orbit-ring orbit-ring-1">
+                    <div class="orbit-item" style="--angle: 0deg">
+                        <div class="orbit-item-inner">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" title="Python">
+                            <span class="orbit-text">Python</span>
+                        </div>
+                    </div>
+                    <div class="orbit-item" style="--angle: 72deg">
+                        <div class="orbit-item-inner">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript">
+                            <span class="orbit-text">JavaScript</span>
+                        </div>
+                    </div>
+                    <div class="orbit-item" style="--angle: 144deg">
+                        <div class="orbit-item-inner">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" title="Java">
+                            <span class="orbit-text">Java</span>
+                        </div>
+                    </div>
+                    <div class="orbit-item" style="--angle: 216deg">
+                        <div class="orbit-item-inner">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" title="C">
+                            <span class="orbit-text">C</span>
+                        </div>
+                    </div>
+                    <div class="orbit-item" style="--angle: 288deg">
+                        <div class="orbit-item-inner">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" title="C++">
+                            <span class="orbit-text">C++</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Middle Orbit (AI/Data Tools) -->
+                <div class="orbit-ring orbit-ring-2">
+                    <div class="orbit-item" style="--angle: 0deg">
+                        <div class="orbit-item-inner">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" title="TensorFlow">
+                            <span class="orbit-text">TensorFlow</span>
+                        </div>
+                    </div>
+                    <div class="orbit-item" style="--angle: 60deg">
+                        <div class="orbit-item-inner">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" title="PyTorch">
+                            <span class="orbit-text">PyTorch</span>
+                        </div>
+                    </div>
+                    <div class="orbit-item" style="--angle: 120deg">
+                        <div class="orbit-item-inner">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-Learn" title="Scikit-Learn">
+                            <span class="orbit-text">Scikit-Learn</span>
+                        </div>
+                    </div>
+                    <div class="orbit-item" style="--angle: 180deg">
+                        <div class="orbit-item-inner">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" title="Pandas">
+                            <span class="orbit-text">Pandas</span>
+                        </div>
+                    </div>
+                    <div class="orbit-item" style="--angle: 240deg">
+                        <div class="orbit-item-inner">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" title="NumPy">
+                            <span class="orbit-text">NumPy</span>
+                        </div>
+                    </div>
+                    <div class="orbit-item" style="--angle: 300deg">
+                        <div class="orbit-item-inner">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV" title="OpenCV">
+                            <span class="orbit-text">OpenCV</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Outer Orbit (Platforms/Other) -->
+                <div class="orbit-ring orbit-ring-3">
+                    <div class="orbit-item" style="--angle: 0deg">
+                        <div class="orbit-item-inner">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" title="React">
+                            <span class="orbit-text">React.js</span>
+                        </div>
+                    </div>
+                    <div class="orbit-item" style="--angle: 72deg">
+                        <div class="orbit-item-inner">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" title="Git">
+                            <span class="orbit-text">Git</span>
+                        </div>
+                    </div>
+                    <div class="orbit-item" style="--angle: 144deg">
+                        <div class="orbit-item-inner">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle" title="Oracle">
+                            <span class="orbit-text">Oracle</span>
+                        </div>
+                    </div>
+                    <div class="orbit-item" style="--angle: 216deg">
+                        <div class="orbit-item-inner">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" title="Linux">
+                            <span class="orbit-text">Linux</span>
+                        </div>
+                    </div>
+                    <div class="orbit-item" style="--angle: 288deg">
+                        <div class="orbit-item-inner">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter" title="Jupyter">
+                            <span class="orbit-text">Jupyter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Written Categorized Skills Grid -->
+            <div class="skills-container reveal">
+                <!-- Languages & Frameworks -->
+                <div class="skill-category glass-card tilt-card">
+                    <h3><i class="fas fa-code text-gradient"></i> Languages & Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">React.js</span>
+                    </div>
+                </div>
+                
+                <!-- AI / ML & Data Science -->
+                <div class="skill-category glass-card tilt-card">
+                    <h3><i class="fas fa-brain text-gradient"></i> AI & Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">Scikit-Learn</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Gen AI</span>
+                        <span class="skill-tag">Algorithm Design</span>
+                        <span class="skill-tag">Data Analytics</span>
+                    </div>
+                </div>
+                
+                <!-- Tools & Platforms -->
+                <div class="skill-category glass-card tilt-card">
+                    <h3><i class="fas fa-tools text-gradient"></i> Tools & Platforms</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Oracle</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">Jupyter</span>
+                        <span class="skill-tag">Automation</span>
+                    </div>
+                </div>
+                
+                <!-- Soft Skills -->
+                <div class="skill-category glass-card tilt-card">
+                    <h3><i class="fas fa-users text-gradient"></i> Soft Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Critical Thinking</span>
+                        <span class="skill-tag">Team Collaboration</span>
+                        <span class="skill-tag">Project Planning</span>
+                        <span class="skill-tag">Quantitative Reasoning</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <h2 class="section-title reveal"><span class="text-gradient">03.</span> Featured Projects</h2>
+            <div class="projects-grid">
+                
+                <!-- Project 1 -->
+                <div class="project-card glass-card reveal tilt-card">
+                    <div class="project-image-wrapper">
+                        <!-- Placeholder, can be updated with real image URLs later -->
+                        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Crop Suggestion" class="project-img">
+                        <div class="project-overlay">
+                            <span class="view-project-text">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="fas fa-leaf folder-icon"></i>
+                            <div class="project-links">
+                                <a href="https://github.com/teja-sai-2006/AI-crop-suggestion-website" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">KrishiMitra</h3>
+                        <p class="project-description">An AI Crop Suggestion Platform collecting user details to provide personalized career recommendations and course suggestions.</p>
+                        <ul class="project-tech">
+                            <li>Python</li>
+                            <li>Machine Learning</li>
+                            <li>AI</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass-card reveal delay-1 tilt-card">
+                    <div class="project-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="File Sorter" class="project-img">
+                        <div class="project-overlay">
+                            <span class="view-project-text">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="fas fa-file-archive folder-icon"></i>
+                            <div class="project-links">
+                                <a href="https://github.com/teja-sai-2006/Smart-File-Sorter-v2.0" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Smart File Sorter v2.0</h3>
+                        <p class="project-description">An application that automatically categorizes mixed files from browsers/messaging platforms based on patterns and naming conventions.</p>
+                        <ul class="project-tech">
+                            <li>Python</li>
+                            <li>Automation</li>
+                            <li>OS Config</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card glass-card reveal delay-2 tilt-card">
+                    <div class="project-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Auto Typer" class="project-img">
+                        <div class="project-overlay">
+                            <span class="view-project-text">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="fas fa-keyboard folder-icon"></i>
+                            <div class="project-links">
+                                <a href="https://github.com/teja-sai-2006/Auto_typer" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Auto Typer</h3>
+                        <p class="project-description">Advanced auto-typing simulation application with configurable hotkeys, human-like typing behavior, and probability-based error simulation.</p>
+                        <ul class="project-tech">
+                            <li>Python</li>
+                            <li>Automation</li>
+                            <li>UI/UX</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card glass-card reveal tilt-card">
+                    <div class="project-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Career Vision" class="project-img">
+                        <div class="project-overlay">
+                            <span class="view-project-text">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="fas fa-briefcase folder-icon"></i>
+                            <div class="project-links">
+                                <a href="https://github.com/teja-sai-2006/career-vision" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Career Vision</h3>
+                        <p class="project-description">AI-Based Career Guidance Platform providing personalized recommendations based on structured questionnaires and selected career paths.</p>
+                        <ul class="project-tech">
+                            <li>AI</li>
+                            <li>Python</li>
+                            <li>Web Tech</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card glass-card reveal delay-1 tilt-card">
+                    <div class="project-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Environmental Platform" class="project-img">
+                        <div class="project-overlay">
+                            <span class="view-project-text">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="fas fa-globe-americas folder-icon"></i>
+                            <div class="project-links">
+                                <a href="https://github.com/teja-sai-2006/Gamified-Environmental-Platform" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Gamified Environmental Platform</h3>
+                        <p class="project-description">An interactive platform promoting environmental awareness and sustainability through gamification, combining technology and social impact.</p>
+                        <ul class="project-tech">
+                            <li>Web Tech</li>
+                            <li>Social Tech</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card glass-card reveal delay-2 tilt-card">
+                    <div class="project-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Study AI" class="project-img">
+                        <div class="project-overlay">
+                            <span class="view-project-text">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="fas fa-book-reader folder-icon"></i>
+                            <div class="project-links">
+                                <a href="https://github.com/teja-sai-2006/study-search-ai" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Study Search AI</h3>
+                        <p class="project-description">AI-powered search application helping users discover educational resources efficiently through intelligent search and exploration.</p>
+                        <ul class="project-tech">
+                            <li>AI</li>
+                            <li>Retrieval Model</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="project-card glass-card reveal tilt-card">
+                    <div class="project-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Library Management" class="project-img">
+                        <div class="project-overlay">
+                            <span class="view-project-text">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="fas fa-layer-group folder-icon"></i>
+                            <div class="project-links">
+                                <a href="https://github.com/teja-sai-2006/Library_Management_System" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Library Management System</h3>
+                        <p class="project-description">A complete system managing books, users, and issue-return operations. Demonstrates core software engineering concepts including modular design and backend logic.</p>
+                        <ul class="project-tech">
+                            <li>Python</li>
+                            <li>Backend Logic</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="view-more-container reveal">
+                <a href="https://github.com/teja-sai-2006" target="_blank" class="btn btn-outline">View More on GitHub</a>
+            </div>
+        </section>
+
+        <!-- GitHub Stats Section -->
+        <section id="github-stats" class="github-stats">
+            <h2 class="section-title reveal"><span class="text-gradient">04.</span> GitHub Statistics</h2>
+            <div class="stats-container reveal delay-1">
+                <div class="stats-glass-panel glass-card">
+                    <img src="https://github-readme-stats-anuraghazra1.vercel.app/api?username=teja-sai-2006&show_icons=true&theme=radical&bg_color=00000000&hide_border=true&title_color=00f2fe&icon_color=ff007f&text_color=94a3b8" alt="Teja Sai GitHub Stats" class="stat-img">
+                </div>
+                <div class="stats-glass-panel glass-card">
+                    <img src="https://github-readme-stats-anuraghazra1.vercel.app/api/top-langs/?username=teja-sai-2006&layout=compact&theme=radical&bg_color=00000000&hide_border=true&title_color=00f2fe&text_color=94a3b8" alt="Top Languages" class="stat-img">
+                </div>
+            </div>
+            <div class="contribution-glass-panel glass-card reveal delay-2">
+                <img src="https://ghchart.rshah.org/00f2fe/teja-sai-2006" alt="teja-sai-2006's GitHub chart" class="stat-img chart-img">
+            </div>
+        </section>
+
+        <!-- Experience & Education Section -->
+        <section id="experience" class="timeline-section">
+            <h2 class="section-title reveal"><span class="text-gradient">05.</span> Experience & Education</h2>
+            
+            <div class="timeline">
+                <!-- Education Item -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">08/2024 - Current</span>
+                        <h3 class="timeline-title">BTech: Computer Science & Engineering (AI & ML)</h3>
+                        <h4 class="timeline-subtitle">Gayatri Vidya Parishad College of Engineering (Autonomous)</h4>
+                        <p>Pursuing specialized track in Artificial Intelligence and Machine Learning, focusing on theoretical foundations and practical implementations.</p>
+                    </div>
+                </div>
+                
+                <!-- Experience Item -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">08/2024 - Current</span>
+                        <h3 class="timeline-title">Student & Researcher</h3>
+                        <h4 class="timeline-subtitle">GVPCE, Visakhapatnam</h4>
+                        <ul class="timeline-list">
+                            <li>Contributed to engineering projects collaborating with peers on design concepts.</li>
+                            <li>Assisted professors in preparing course materials and organizing classroom activities.</li>
+                            <li>Conducted research for academic assignments using libraries and online databases.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="certifications">
+            <h2 class="section-title reveal"><span class="text-gradient">06.</span> Certifications</h2>
+            <div class="cert-grid">
+                <a href="https://drive.google.com/drive/folders/1aEE8u-4ol6jIzhoQuAF_BhbwR5HbFV6i?usp=drive_link" target="_blank" class="cert-card-link reveal">
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon-container">
+                            <i class="fas fa-certificate text-gradient"></i>
+                        </div>
+                        <h4>NASSCOM Digital Application Fundamentals (STEM)</h4>
+                        <span>FutureSkills Prime (MeitY) & NASSCOM</span>
+                    </div>
+                </a>
+                
+                <a href="https://drive.google.com/drive/folders/1aEE8u-4ol6jIzhoQuAF_BhbwR5HbFV6i?usp=drive_link" target="_blank" class="cert-card-link reveal delay-1">
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon-container">
+                            <i class="fas fa-robot text-gradient"></i>
+                        </div>
+                        <h4>Introduction to Generative AI</h4>
+                        <span>IBM</span>
+                    </div>
+                </a>
+                
+                <a href="https://drive.google.com/drive/folders/1aEE8u-4ol6jIzhoQuAF_BhbwR5HbFV6i?usp=drive_link" target="_blank" class="cert-card-link reveal delay-2">
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon-container">
+                            <i class="fab fa-google text-gradient"></i>
+                        </div>
+                        <h4>AI-ML Virtual Internship</h4>
+                        <span>EduSkills x Google</span>
+                    </div>
+                </a>
+                
+                <a href="https://drive.google.com/drive/folders/1aEE8u-4ol6jIzhoQuAF_BhbwR5HbFV6i?usp=drive_link" target="_blank" class="cert-card-link reveal">
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon-container">
+                            <i class="fab fa-python text-gradient"></i>
+                        </div>
+                        <h4>Python for Data Science</h4>
+                        <span>NPTEL</span>
+                    </div>
+                </a>
+                
+                <a href="https://drive.google.com/drive/folders/1aEE8u-4ol6jIzhoQuAF_BhbwR5HbFV6i?usp=drive_link" target="_blank" class="cert-card-link reveal delay-1">
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon-container">
+                            <i class="fas fa-code text-gradient"></i>
+                        </div>
+                        <h4>Programming, Data Structures, & Algorithms using Python</h4>
+                        <span>NPTEL</span>
+                    </div>
+                </a>
+                
+                <a href="https://drive.google.com/drive/folders/1aEE8u-4ol6jIzhoQuAF_BhbwR5HbFV6i?usp=drive_link" target="_blank" class="cert-card-link reveal delay-2">
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon-container">
+                            <i class="fas fa-cloud text-gradient"></i>
+                        </div>
+                        <h4>Oracle Cloud Infrastructure 2025 – Generative AI Professional</h4>
+                        <span>Oracle (10/25)</span>
+                    </div>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1aEE8u-4ol6jIzhoQuAF_BhbwR5HbFV6i?usp=drive_link" target="_blank" class="cert-card-link reveal">
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon-container">
+                            <i class="fas fa-database text-gradient"></i>
+                        </div>
+                        <h4>Oracle Cloud Infrastructure 2025 – AI Foundations Associate</h4>
+                        <span>Oracle</span>
+                    </div>
+                </a>
+
+                <a href="https://developers.google.com/profile/u/sattitejasairamareddy_GVPCE" target="_blank" class="cert-card-link reveal delay-1">
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon-container">
+                            <i class="fas fa-award text-gradient"></i>
+                        </div>
+                        <h4>Google Developer Badges</h4>
+                        <span>Adv. Product Image Search, Image Search, Adv. Object Detection, Object Detection, Image Classification, TensorFlow</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <h2 class="section-title reveal"><span class="text-gradient">06.</span> Get In Touch</h2>
+            <div class="contact-container reveal">
+                <div class="contact-text">
+                    <h3 class="contact-heading">Let's Connect</h3>
+                    <p>I'm currently looking for new opportunities in AI, Machine Learning, and Software Engineering. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                    <a href="mailto:tejasai13052006@gmail.com" class="btn btn-primary cta-btn">Say Hello <i class="fas fa-paper-plane"></i></a>
+                    
+                    <div class="contact-details-box glass-card mt-4">
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:tejasai13052006@gmail.com">tejasai13052006@gmail.com</a>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:+918008217209">+91 8008217209</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="contact-form" class="contact-form glass-card">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" autocomplete="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" autocomplete="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" autocomplete="off" placeholder="Opportunity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time-display">Time &amp; Date</label>
+                        <input type="text" id="time-display" class="time-display" readonly placeholder="Auto-detected...">
+                        <!-- Hidden input that EmailJS reads for {{time}} variable -->
+                        <input type="hidden" id="time" name="time">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit-btn">
+                        <span class="btn-text">Send Message <i class="fas fa-arrow-right"></i></span>
+                        <span class="btn-loader" style="display: none;"><i class="fas fa-spinner fa-spin"></i></span>
+                    </button>
+                    <!-- Form Status Message -->
+                    <div id="form-status" class="form-status"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <a href="#home" class="footer-logo">Teja<span class="text-gradient">.ai</span></a>
+            <div class="social-links-footer">
+                <a href="https://github.com/teja-sai-2006" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" class="social-icon"><i class="fas fa-file-pdf"></i></a>
+            </div>
+            <p class="copyright">Designed & Built by <span class="highlight">Teja Sai Satti</span> &copy; 2026</p>
+        </div>
+    </footer>
+
+    <!-- EmailJS CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS with Public Key
+        (function() {
+            emailjs.init("COJmf3cg82a18gA_y");
+        })();
+    </script>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
