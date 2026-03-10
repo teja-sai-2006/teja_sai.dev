@@ -532,14 +532,16 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Failed to load Three.js dynamically", err);
     });
 
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    // Smooth scrolling for internal anchor links only
+    document.querySelectorAll('a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            // Only intercept internal hash links, let external links go through normally
+            if (!href || !href.startsWith('#')) return;
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            if (href === '#') return;
 
-            const targetElement = document.querySelector(targetId);
+            const targetElement = document.querySelector(href);
             if (targetElement) {
                 const headerOffset = 80;
                 const elementPosition = targetElement.getBoundingClientRect().top;
